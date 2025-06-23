@@ -1,2 +1,2 @@
-# AngularProject
-Angular learning and projects
+# Angular
+Angular components
