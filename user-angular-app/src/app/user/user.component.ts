@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DUMMY_USERS } from './dummy-users';
 
 
@@ -11,10 +11,10 @@ const randomeIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-    user = DUMMY_USERS[randomeIndex];
-    userImg = `assets/users/${this.user.avatar}`;
+    @Input({}) name: string = 'Hemanathan';
+    @Input() avatar: string = 'avatar.png';
 
     get imagePath() {
-        return 'assets/users/' + this.user.avatar;
+        return 'assets/users/' + this.avatar;
     }
 }
