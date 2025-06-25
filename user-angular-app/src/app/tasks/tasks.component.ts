@@ -8,6 +8,5 @@ import { DUMMY_USERS } from '../user/dummy-users';
   styleUrls: ['./tasks.component.css'] 
 })
 export class TasksComponent {
-  @Input() id: string = '';
-  userId = DUMMY_USERS[Number(this.id)];
+  @Input() name!: string;
 }
