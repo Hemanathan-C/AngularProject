@@ -17,6 +17,7 @@ export class AppComponent {
   userId = '';
 
   get selectedUser(){
+    console.log('APP Selected USER :',this.users.find((user) => user.id === this.userId)!);
     return this.users.find((user) => user.id === this.userId)!;
   }
 
