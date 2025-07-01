@@ -20,4 +20,9 @@ export class TasksComponent {
     if (!t) console.warn('Task not found for ID:', this.id);
     return t;
   }
+
+  onTaskCompleted(taskId: string) {
+    console.log('Task completed:', taskId);
+    this.tasks = this.tasks.filter(task => task.id !== taskId);
+  }
 }
