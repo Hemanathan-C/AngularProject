@@ -3,6 +3,7 @@ import { DUMMY_USERS } from '../user/dummy-users';
 import { TaskComponent } from './task/task.component';
 import { DUMMY_TASKS } from './task/dummy-tasks';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { NewTaskData } from './new-task/new-task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -34,5 +35,17 @@ export class TasksComponent {
 
   onCancelAddTask() {
     this.isAddTask = false;
+  }
+
+  onSubmit(taskData: NewTaskData) {
+    this.tasks.push({
+      id: new Date().toISOString(),
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.dueDate,
+      userId: this.id
+    });
+    this.isAddTask = false;
+    console.log('Task added:', taskData);
   }
 }
