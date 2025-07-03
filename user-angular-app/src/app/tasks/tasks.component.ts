@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { DUMMY_USERS } from '../user/dummy-users'; 
 import { TaskComponent } from './task/task.component';
-import { DUMMY_TASKS } from './task/dummy-tasks';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { NewTaskData } from './new-task/new-task.model';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -14,19 +14,17 @@ import { NewTaskData } from './new-task/new-task.model';
 export class TasksComponent {
   @Input() name!: string;
   @Input() id!: string;
-  tasks = DUMMY_TASKS;
   isAddTask = false;
   
+  constructor(private tasksService: TasksService) {}
+
   get selectedUserTask(){
-    console.log('APP Selected USER :',this.tasks.find((user) => user.id === this.id)!);
-    const t = this.tasks.filter((task) => task.userId === this.id)!;
-    if (!t) console.warn('Task not found for ID:', this.id);
-    return t;
+    return this.tasksService.selectedUserTasks(this.id);
   }
 
   onTaskCompleted(taskId: string) {
     console.log('Task completed:', taskId);
-    this.tasks = this.tasks.filter(task => task.id !== taskId);
+    // this.tasks = this.tasks.filter(task => task.id !== taskId);
   }
 
   onAddTask() {
@@ -38,13 +36,13 @@ export class TasksComponent {
   }
 
   onSubmit(taskData: NewTaskData) {
-    this.tasks.push({
-      id: new Date().toISOString(),
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.dueDate,
-      userId: this.id
-    });
+    // this.tasks.push({
+    //   id: new Date().toISOString(),
+    //   title: taskData.title,
+    //   summary: taskData.summary,
+    //   dueDate: taskData.dueDate,
+    //   userId: this.id
+    // });
     this.isAddTask = false;
     console.log('Task added:', taskData);
   }

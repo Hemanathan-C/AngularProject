@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DUMMY_USERS } from './dummy-users';
+import { CardComponent } from '../shared/card/card.component';
 
 
 const randomeIndex = Math.floor(Math.random() * DUMMY_USERS.length);
@@ -10,7 +11,7 @@ interface User {
 }
 @Component({
   selector: 'app-user',
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
