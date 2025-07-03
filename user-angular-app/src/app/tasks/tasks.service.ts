@@ -27,6 +27,14 @@ export class TasksService{
       'Prepare and describe an issue template which will help with project management',
     dueDate: '2024-06-15',
   },]
+  
+  constructor() {
+    const task = localStorage.getItem('tasks');
+
+    if(task){
+      this.tasks = JSON.parse(task);
+    }
+  }
 
   selectedUserTasks(id: string){
     console.log('APP Selected USER :',this.tasks.find((user) => user.id === id)!);
@@ -43,6 +51,16 @@ export class TasksService{
       dueDate: taskData.dueDate,
       userId: id
     });
+    this.saveTasks();
     console.log('Task added:', taskData);
+  }
+
+  removeTask(id: string) {
+    this.tasks = this.tasks.filter(task => task.id !== id);
+    this.saveTasks();
+  }
+
+  private saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }

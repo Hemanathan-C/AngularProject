@@ -31,19 +31,8 @@ export class TasksComponent {
     this.isAddTask = true;
   }
 
-  onCancelAddTask() {
+  onCloseAddTask() {
     this.isAddTask = false;
   }
 
-  onSubmit(taskData: NewTaskData) {
-    // this.tasks.push({
-    //   id: new Date().toISOString(),
-    //   title: taskData.title,
-    //   summary: taskData.summary,
-    //   dueDate: taskData.dueDate,
-    //   userId: this.id
-    // });
-    this.isAddTask = false;
-    console.log('Task added:', taskData);
-  }
 }
