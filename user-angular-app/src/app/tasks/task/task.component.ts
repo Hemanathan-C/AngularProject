@@ -3,11 +3,12 @@ import { Task } from '../new-task/new-task.model';
 import { CardComponent } from '../../shared/card/card.component';
 import { DatePipe } from '@angular/common';
 import { TasksService } from '../tasks.service';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @Component({
   selector: 'app-task',
-  imports: [CardComponent, DatePipe],
+  imports: [SharedModule, DatePipe],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })

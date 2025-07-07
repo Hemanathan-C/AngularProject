@@ -4,7 +4,6 @@ import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterOutlet,UserComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
