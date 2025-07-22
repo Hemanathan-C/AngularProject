@@ -8,7 +8,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './dashboard-item.component.css'
 })
 export class DashboardItemComponent {
+  @Input() image!: {src: string, alt: string};
   @Input() title!: string;
-  @Input() altText!: string;
-  @Input() iconSrc!: string;
 }
